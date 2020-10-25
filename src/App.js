@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import { getPokemon, getAllPokemon } from './services/pokemon';
-import Pagination from './components/Pagination';
+// import Pagination from './components/Pagination';
 import DataPokemon from './components/DataPokemon';
 
 
