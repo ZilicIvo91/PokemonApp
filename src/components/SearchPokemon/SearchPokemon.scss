@@ -1,0 +1,27 @@
+.searchPokemon-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    input {
+        width: min-content;
+        height: 50px;
+        padding: 10px;
+        font-size: 2rem;
+        margin: 20px 20px;
+        border-radius: 10px;
+    }
+    input[type="submit"]{
+        height: 55px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .searchPokemon-container{
+        width: min-content;
+        align-items: center;
+        padding: 5px;
+
+
+       
+        
+    }
+}

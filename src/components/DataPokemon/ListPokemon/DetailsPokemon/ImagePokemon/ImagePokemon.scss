@@ -1,0 +1,35 @@
+.imagePokemon-container{
+    width: 300px;
+    height: 250px;
+    position: relative;
+    background-color: blanchedalmond;
+    .image{
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 10%;
+        left: 15%;
+    }
+
+    .btn{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10%;
+        height: 50%;
+        background-color: #808080;
+        border: none;
+        background-color: blanchedalmond;
+
+    }
+
+    #goLeft {
+        @extend .btn;
+        left: 0;
+    }
+    
+    #goRight {
+        @extend .btn;
+        right: 0;
+    }
+}

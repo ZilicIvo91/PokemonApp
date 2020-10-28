@@ -1,0 +1,48 @@
+.detailsPokemon-container{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background-color: red;
+    border-radius:10px;
+    z-index: 100;
+    margin-left: 200px;
+        .btn-close{
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            z-index: 200;
+        }
+        .detailsPokemon-details{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .detailsPokemon-detail-container{
+            width: 80%;
+            margin-top: 20px;
+
+            .detailsPokemon-detail{
+                display: flex;
+                justify-content: space-evenly;
+                font-size: 1.5rem;
+                :first-child{
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .detailPokemon-type{
+           display: flex;
+           flex-direction: row;
+        }
+}
+@media screen and (max-width: 600px){
+    .detailsPokemon-container{
+        margin-top: 150px;
+    }
+}
