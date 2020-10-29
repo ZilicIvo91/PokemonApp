@@ -11,24 +11,28 @@ export default function DetailsPokemon({ pokemon, isOpen, close, typePokemon }) 
             <button className="btn-close" onClick={close}>X</button>
 
             <div className="detailsPokemon-details">
-
                 <ImagePokemon pokemon={pokemon} />
 
                 <div className="detailPokemon-type">
                     {pokemon.types.map(type => (
-                <TypePokemon 
-                        key={type.type.name} 
-                        type={type.type.name}
-                        typePokemon={typePokemon} /> ))}
+                    <TypePokemon 
+                            key={type.type.name} 
+                            type={type.type.name} /> ))}
                 </div>
                 <div className="detailsPokemon-detail-container">
                     <div className="detailsPokemon-detail">
                         <p>Weight:</p>
-                        <p>{pokemon.weight}</p>
+                        <p>{(pokemon.weight)/10} kg</p>
                     </div>
                     <div className="detailsPokemon-detail">
                         <p>Height:</p>
-                        <p>{pokemon.height}</p>
+                        <p>{(pokemon.height)/10} m</p>
+                    </div>
+                    <div className="detailsPokemon-detail">
+                        <p>Ability:</p>
+                       {pokemon.abilities.map((ability) => (
+                           <p className="abilities" key={ability.ability.name}>{ability.ability.name}</p>
+                       ))}
                     </div>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 .detailsPokemon-container{
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: min-content;
     position: relative;
-    background-color: red;
+    background-color: #fffdcf;
     border-radius:10px;
     z-index: 100;
-    margin-left: 200px;
+    margin-top: 200px;
         .btn-close{
             position: absolute;
             top: 5px;
@@ -28,8 +28,11 @@
 
             .detailsPokemon-detail{
                 display: flex;
-                justify-content: space-evenly;
+                justify-content: center;
+                align-items:center;
+                flex-direction: column;
                 font-size: 1.5rem;
+                margin-bottom: 10px;
                 :first-child{
                     font-weight: bold;
                 }
@@ -41,8 +44,11 @@
            flex-direction: row;
         }
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 400px){
     .detailsPokemon-container{
         margin-top: 150px;
+        display: grid;
+        grid-template-column: 1fr;
+        width: 100%;
     }
 }

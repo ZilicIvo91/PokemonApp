@@ -12,3 +12,13 @@
         width: 120px;
     }
 }
+@media screen and (max-width: 400px) {
+    .allPokemonButton{
+        position:relative;
+        button{
+            position:absolute;
+            top:0;
+            right: 35%;
+        }
+    }
+}

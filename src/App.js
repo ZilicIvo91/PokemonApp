@@ -15,29 +15,25 @@ function App() {
   const [nextPageUrl, setNextPageUrl] = useState("");
   const [prevPageUrl, setPrevPageUrl] = useState("");
   const [loading, setLoading] = useState(true);
-
   const [searchPokemon, setSearchPokemon] = useState("");
-  const [typePokemon, setTypePokemon] = useState("");
 
   useEffect(() => {
     async function fetchData(){
       let response = await getAllPokemon(initialUrl)
-      console.log(response)
       setNextPageUrl(response.next);
       setPrevPageUrl(response.previous);
       await loadPokemon(response.results);
-      console.log(response.results)
       setLoading(false);
     }
     fetchData();
   }, [])
 
   const loadPokemon = async (data) => {
-    let _pokemonData = await Promise.all(data.map(async pokemon => {
-      let pokemonRecord = await getPokemon(pokemon)
-      return pokemonRecord
+    let dataPokemon = await Promise.all(data.map(async pokemon => {
+      let pokemons = await getPokemon(pokemon)
+      return pokemons
     }))
-    setPokemonData(_pokemonData);
+    setPokemonData(dataPokemon);
   }
 
   const goToNextPage = async () => {
@@ -45,7 +41,6 @@ function App() {
     let data = await getAllPokemon(nextPageUrl)
     await loadPokemon(data.results);
     setNextPageUrl(data.next)
-    console.log(nextPageUrl)
     setPrevPageUrl(data.previous);
     setLoading(false);
   }
@@ -62,16 +57,6 @@ function App() {
     setLoading(false);
   }
 
-  const typeGetPokemon = async () => {
-    const typeUrl = `https://pokeapi.co/api/v2/type/${typePokemon}`
-    const response = await getAllPokemon(typeUrl);
-    await loadPokemon(response.results);
-    // let array = [];
-    // array.push(data)
-    // setPokemonData(array);
-  }
-  
-  
   const searchChange = (e) => {
     setSearchPokemon(e.target.value.toLowerCase());
   }
@@ -84,7 +69,6 @@ function App() {
   const searchGetPokemon = async () => {
     const searchUrl = `https://pokeapi.co/api/v2/pokemon/${searchPokemon}`
     const data = await getAllPokemon(searchUrl);
-    console.log(data)
     let array = [];
     array.push(data)
     setPokemonData(array);
@@ -94,23 +78,33 @@ function App() {
     setLoading(true);
     let response = await getAllPokemon(initialUrl)
     let count = response.count;
-    console.log(count);
     const allPokemonUrl = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=${count}`;
     let data = await getAllPokemon(allPokemonUrl);
     await loadPokemon(data.results);
-    console.log(data.results);
     setLoading(false);
   }
 
-  const typePokemonChange = (param) => e => {
-    setTypePokemon(param);
+  const typePokemonSearch = (checked) => {
+    typeGetPokemon(checked)
   }
 
-  const typePokemonSearch = (checked) => {
-    setTypePokemon(checked);
-    typeGetPokemon()
+   const typeGetPokemon = async (typePokemon) => {
+    setLoading(true);
+    let typeUrl = `https://pokeapi.co/api/v2/type/${typePokemon}/`
+    const response = await getAllPokemon(typeUrl);
+
+    const filterPokemon = async (data) => {
+      let dataPokemon = await Promise.all(data.map(async pokemon => {
+      let pokemons = await getPokemon(pokemon.pokemon)
+      return pokemons
+    }))
+    setPokemonData(dataPokemon);
   }
-  if (loading) return <img src={Loader} style={{ marginTop: '20%', marginLeft: '30%'}} />
+    await filterPokemon(response.pokemon);
+    setLoading(false);
+   }
+
+  if (loading) return <img src={Loader} alt="loader" style={{ marginTop: '20%', marginLeft: '30%'}} />
   
   return (
     <div className="app-container">
@@ -121,22 +115,18 @@ function App() {
           searchPokemon={searchPokemon} 
           searchChange={searchChange} 
           searchSubmit={searchSubmit} />
+
         <AllPokemonButton 
             allPokemonButton={allPokemonButton} />
-      <div className="app-main">
-        
-          <FilterTypes
-            typePokemon={typePokemon}
-            typePokemonChange={typePokemonChange} 
-            typePokemonSearch={typePokemonSearch} />
-  
 
-          
+      <div className="app-main">
+          <FilterTypes 
+            typePokemonSearch={typePokemonSearch} />
+
           <DataPokemon 
-            pokemonData={pokemonData}
-            typePokemon={typePokemon} />
-        
+            pokemonData={pokemonData} />      
       </div>
+
       <footer>
         <Pagination 
             goToPrevPage={prevPageUrl ?  goToPrevPage  : null}

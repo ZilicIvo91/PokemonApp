@@ -1,15 +1,12 @@
-import React,{ useEffect, useState } from 'react';
+import React from 'react';
 import './TypePokemon.scss';
-// import { getPokemon, getAllPokemon } from '../../services/pokemon';
+import typeColors from '../../../../../helpers/typeColors';
 
 export default function TypePokemon({ type }) {
-    const clickType = param => e => {
-        console.log(param)
-    };
-    
     return (
-        <div className="typePokemon-container">
-            <p onClick={clickType(type)}>{type}</p>
+        <div className="typePokemon-container"
+        style={{ backgroundColor: typeColors[type]}}>
+            <p>{type}</p>
         </div>
     )
 }

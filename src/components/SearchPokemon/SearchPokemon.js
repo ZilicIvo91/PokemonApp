@@ -14,7 +14,7 @@ export default function SearchPokemon({ searchPokemon, searchChange, searchSubmi
                     placeholder="Enter Pokemon Name" />
                     <input
                         type="submit"
-                        value="GO!" />
+                        value="Find" />
                 </label>
             </form>
         </div>

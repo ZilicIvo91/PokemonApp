@@ -3,7 +3,8 @@ import './FilterTypes.scss';
 
 
 export default function FilterTypes({ typePokemonChange, typePokemonSearch }) {
-    const [checkedPokemon, setCheckedPokemon] = useState("")
+    const [checkedPokemon, setCheckedPokemon] = useState("");
+    const [isFilterOpen, setIsFilterOpen] = useState(false)
     const pokemonTypes = [
         'bug',
         'dragon',
@@ -26,19 +27,25 @@ export default function FilterTypes({ typePokemonChange, typePokemonSearch }) {
         'unknown',
         'water'
     ];
-   
+    const isOpen = (e) => {
+        setIsFilterOpen(!isFilterOpen);
+    }
+
     const typePokemonCheck = param => e => {
         setCheckedPokemon(param)
     };
 
    return (
         <div className="filterTypes-container">
-            <p>Filter pokemon-type:</p>
-            <div className="filterTypes-filter">
+            <p onClick={isOpen}>Filter pokemon-type:</p>
+            <div className={ isFilterOpen ? "filterTypes-filter" : "filterTypes-filter-none" }>
                 {pokemonTypes.map(type => (
-                    <div className="filterTypes-filter" key={type} onChange={typePokemonChange} onClick={typePokemonCheck(type)}>
-                        <input type="checkbox" /> 
-                        <label>{type}</label>
+                    <div key={type} onChange={typePokemonChange} onClick={typePokemonCheck(type)}>
+                       <form>
+                        <label>
+                            <input type="radio" value={type} /> 
+                            {type}</label>
+                        </form>
                     </div>
                 ))}
                 <button className="filterTypes-searchbtn" onClick={() => typePokemonSearch(checkedPokemon)}>Search Pokemon</button>

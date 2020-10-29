@@ -4,6 +4,8 @@
     background-color: blanchedalmond;
     margin-left: 50px;
     font-size: 2rem;
+    border-radius: 20px;
+    cursor:pointer;
     p{
         text-align: center;
         font-weight: bold;
@@ -19,6 +21,9 @@
             font-size: 2rem;
         }
     }
+    .filterTypes-filter-none{
+        display: none;
+    }
     .filterTypes-searchbtn{
         width: 100%;
         height: 40px;
@@ -26,19 +31,16 @@
         margin: 50px -20px;
         cursor: pointer;
     }
+    
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 400px){
     .filterTypes-container{
+        font-size: 1.5rem;
         width: 80%;
-        color: red;
         cursor:pointer;
-        margin: 20px 60px;
+        margin: 20px 30px;
         height: auto;
         border-radius: 10px;
         padding: 10px;
-    }
-
-    .filterTypes-filter{
-        display:none;
     }
 }

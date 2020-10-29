@@ -1,15 +1,17 @@
 .pokemonData-container{
-    width: 100%;
+    width: 70%;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
     grid-column-gap: 50px;
     grid-row-gap: 50px;
     margin-left: 50px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
     .pokemonData-container{
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr;
+        margin: 10px 0px;
     }
 }

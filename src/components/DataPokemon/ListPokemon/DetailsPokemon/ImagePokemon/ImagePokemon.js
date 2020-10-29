@@ -3,11 +3,10 @@ import './ImagePokemon.scss';
 import { FiArrowLeft } from "react-icons/fi";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-
 export default function ImagePokemon({ pokemon }) {
     const [index, setIndex] = useState(0);
-    let sliderArray = [];
 
+    let sliderArray = [];
     for(let key in pokemon.sprites) {
         if(key.includes("front_default")){
             sliderArray.push(pokemon.sprites[key])
