@@ -6,10 +6,11 @@
     button {
         position: absolute;
         border-radius: 10px;
-        right: 50px;
+        right: 130px;
         top: -50px;
         height: 30px;
         width: 120px;
+        cursor: pointer;
     }
 }
 @media screen and (max-width: 400px) {

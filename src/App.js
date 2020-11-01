@@ -16,7 +16,8 @@ function App() {
   const [prevPageUrl, setPrevPageUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchPokemon, setSearchPokemon] = useState("");
-
+  const [checkedPokemon, setCheckedPokemon] = useState("");
+  
   useEffect(() => {
     async function fetchData(){
       let response = await getAllPokemon(initialUrl)
@@ -64,14 +65,17 @@ function App() {
   const searchSubmit = (e) => {
     e.preventDefault();
     searchGetPokemon();
+    setSearchPokemon("")
   }
 
   const searchGetPokemon = async () => {
+    setLoading(true);
     const searchUrl = `https://pokeapi.co/api/v2/pokemon/${searchPokemon}`
     const data = await getAllPokemon(searchUrl);
     let array = [];
     array.push(data)
     setPokemonData(array);
+    setLoading(false);
   }
   
   const allPokemonButton = async () => {
@@ -122,7 +126,7 @@ function App() {
       <div className="app-main">
           <FilterTypes 
             typePokemonSearch={typePokemonSearch} />
-
+            
           <DataPokemon 
             pokemonData={pokemonData} />      
       </div>
