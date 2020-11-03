@@ -16,7 +16,6 @@ function App() {
   const [prevPageUrl, setPrevPageUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchPokemon, setSearchPokemon] = useState("");
-  const [checkedPokemon, setCheckedPokemon] = useState("");
   
   useEffect(() => {
     async function fetchData(){
@@ -126,7 +125,7 @@ function App() {
       <div className="app-main">
           <FilterTypes 
             typePokemonSearch={typePokemonSearch} />
-            
+
           <DataPokemon 
             pokemonData={pokemonData} />      
       </div>

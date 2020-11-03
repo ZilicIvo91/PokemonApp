@@ -1,10 +1,11 @@
 .filterTypes-container{
-    width: 20%;
+    width: min-content;
     height: min-content;
     background-color: blanchedalmond;
     margin-left: 50px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     border-radius: 20px;
+    padding: 10px;
     cursor:pointer;
     p{
         text-align: center;
@@ -14,6 +15,7 @@
     .filterTypes-filter{
         margin-left: 50px;
         margin-top: 10px;
+        width: 200px;
         
         input, label {
             cursor: pointer;
@@ -36,7 +38,7 @@
 @media screen and (max-width: 400px){
     .filterTypes-container{
         font-size: 1.5rem;
-        width: 80%;
+        width: min-content;
         cursor:pointer;
         margin: 20px 30px;
         height: auto;
