@@ -13,5 +13,8 @@ export async function getAllPokemon(url) {
             .then(data => {
                 resolve(data)
             })
+            .catch((reject) => {
+                console.log('Error:', reject);
+              })
     });
 }

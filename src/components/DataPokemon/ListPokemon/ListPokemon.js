@@ -12,7 +12,7 @@ const clickPokemon = param => e => {
   return (
     <div key={pokemon.name} className="listPokemon-container">
       <div className="listPokemon-mobile">
-        <img src={pokemon.sprites.front_default} alt="" />
+        <img src={pokemon.sprites.front_default} alt="" onClick={clickPokemon(pokemon)} />
         <h3 onClick={clickPokemon(pokemon)}>{pokemon.name}</h3>
         
       <DetailsPokemon 

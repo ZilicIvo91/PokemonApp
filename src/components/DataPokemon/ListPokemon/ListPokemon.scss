@@ -1,22 +1,27 @@
 .listPokemon-container{
-    width: 20vw;
-    height: 25vh;
+    width: 90%;
+    height: 35vh;
     position: relative;
     background-color: blanchedalmond;
+    border-radius: 50px;
+
+
+
     h3, img{
-        width: 200px;
+        width: 55%;
         position: absolute;
         text-transform: capitalize;
-        left: 25%;
+        left: 20%;
+        cursor: pointer;
     }
     h3{
         font-size: 1.8rem;
         bottom: 30px;
-        left: 35%;
-        cursor: pointer;
+        left: 30%;
     }
+
     img{
-        bottom: 70px;
+        bottom: 20%;
     }
     
 }

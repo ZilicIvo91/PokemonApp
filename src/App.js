@@ -66,7 +66,7 @@ function App() {
     searchGetPokemon();
     setSearchPokemon("")
   }
-
+  
   const searchGetPokemon = async () => {
     setLoading(true);
     const searchUrl = `https://pokeapi.co/api/v2/pokemon/${searchPokemon}`
@@ -76,7 +76,6 @@ function App() {
     setPokemonData(array);
     setLoading(false);
   }
-  
   const allPokemonButton = async () => {
     setLoading(true);
     let response = await getAllPokemon(initialUrl)
@@ -107,7 +106,9 @@ function App() {
     setLoading(false);
    }
 
-  if (loading) return <img src={Loader} alt="loader" style={{ marginTop: '20%', marginLeft: '30%'}} />
+  if (loading) return <img src={Loader} alt="loader" style={{ 
+    marginTop: '20%', marginLeft: '40%'
+  }} />
   
   return (
     <div className="app-container">
